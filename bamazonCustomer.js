@@ -31,7 +31,7 @@ var displayList = function() {
         }
         console.log(displayTable.toString());
         purchaseRequest();
-    })
+    });
 }
 
 function purchaseRequest() {
