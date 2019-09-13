@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-// var inquirer = require("inquirer");
+var inquirer = require("inquirer");
 var Table = require("cli-table");
 
 var connection = mysql.createConnection({
@@ -30,6 +30,32 @@ function displayList() {
             );
         }
         console.log(displayTable.toString());
-        // userPrompts();
+        purchaseRequest();
     })
 }
+
+function purchaseRequest() {
+    inquirer.prompt([
+        {
+            name: "ID",
+            type: "input",
+            message: "Please enter the item ID of the product you would like to purchase.",
+            filter: Number
+        },
+
+        {
+            name: "Quantity",
+            type: "input",
+            message: "Please enter the quanity you would like to purchase.",
+            filter: Number
+        }
+    ]).then(function(answers) {
+        var idReq = answers.ID; 
+        var quantityReq = answers.Quantity;
+        purchaseComplete();
+    });
+};
+
+// function purchaseComplete(id, quantity) {
+
+// }
