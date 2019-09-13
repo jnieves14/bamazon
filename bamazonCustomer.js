@@ -60,7 +60,8 @@ function purchaseComplete(idReq, quantityReq) {
     connection.query("SELECT * FROM products WHERE item_id =" + idReq, function(err,res) {
         if (err) throw err;
         if (quantityReq <= res[0].stock_quantity) {
-            var totalCharged = res[0].price * quantityReq;
+            // var totalCharged = res[0].price * quantityReq;
+            var totalCharged = parseFloat(((res[0].price)*quantityReq).toFixed(2));
             console.log("You're in luck, we have your order in stock!");
             console.log("The total for your purchase of " + quantityReq + " " + res[0].product_name + " priced at $" + res[0].price + " each is $" + totalCharged + ".");
 
