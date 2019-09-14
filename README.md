@@ -24,8 +24,11 @@ Bamazon: an Amazon-like storefront that will take in orders from customers and d
 
 It's a command line app, so opening the live site won't show much. >.<
 
-## Preview
+## Preview of bamazonCustomer.js
 ![](assets/bamazon-preview.gif)
+
+## Preview of bamazonManager.js
+![](assets/manager-preview.gif)
 
 
 ## Technologies Used
