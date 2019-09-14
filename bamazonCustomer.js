@@ -80,11 +80,11 @@ function purchaseComplete(idReq, quantityReq) {
 
 function displayAgain(){
     inquirer.prompt([{
-      type: "confirm",
-      name: "reply",
-      message: "Would you like to purchase another item?"
-    }]).then(function(ans){
-      if(ans.reply){
+        name: "Reply",
+        type: "confirm",
+        message: "Would you like to purchase another item?"
+    }]).then(function(answer){
+      if(answer.Reply){
         displayList();
       } else{
         console.log("See you next time!");
