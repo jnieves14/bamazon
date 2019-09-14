@@ -65,13 +65,33 @@ function purchaseComplete(idReq, quantityReq) {
             console.log("You're in luck, we have your order in stock!");
             console.log("The total for your purchase of " + quantityReq + " " + res[0].product_name + " priced at $" + res[0].price + " each is $" + totalCharged + ".");
 
-            connection.query("UPDATE products SET stock_quantity = stock_quantity - " + quantityReq + "WHERE item_id = " + idReq);
+            // connection.query("UPDATE products SET stock_quantity = stock_quantity - " + quantityReq + "WHERE item_id = " + idReq);
+            connection.query("UPDATE Products SET ? WHERE ?", [
+                {stock_quantity: (res[0].stock_quantity - quantityReq)},
+                {item_id: idReq}
+                ]);
         } else {
             console.log ("Sorry, we do not have enough of " + res[0].product_name + " in stock.");
         };
-        displayList();
+        displayAgain();
     })
 
 }
 
+function displayAgain(){
+    inquirer.prompt([{
+      type: "confirm",
+      name: "reply",
+      message: "Would you like to purchase another item?"
+    }]).then(function(ans){
+      if(ans.reply){
+        displayList();
+      } else{
+        console.log("See you next time!");
+      }
+    });
+}
+
 displayList();
+
+// how do i restock?
